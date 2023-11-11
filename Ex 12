@@ -1,0 +1,87 @@
+//prg 1//
+//a//
+import java.util.List;
+
+public class OddIntegersCounter {
+    public static <T extends Number> int countOddIntegers(List<T> integerList) {
+        int count = 0;
+        for (T number : integerList) {
+            if (number.intValue() % 2 != 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        // Example usage
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        int oddCount = countOddIntegers(numbers);
+        System.out.println("Number of odd integers: " + oddCount);
+    }
+}
+//b//
+public class ElementExchanger {
+    public static <T> void exchangeElements(T[] array, int index1, int index2) {
+        if (index1 >= 0 && index1 < array.length && index2 >= 0 && index2 < array.length) {
+            T temp = array[index1];
+            array[index1] = array[index2];
+            array[index2] = temp;
+        }
+    }
+
+    public static void main(String[] args) {
+        // Example usage
+        Integer[] numbers = {1, 2, 3, 4, 5};
+        exchangeElements(numbers, 1, 3);
+
+        for (Integer number : numbers) {
+            System.out.print(number + " ");
+        }
+    }
+}
+//c//
+import java.util.List;
+
+public class MaxElementFinder {
+    public static <T extends Comparable<T>> T findMaxInRange(List<T> list, int begin, int end) {
+        T max = list.get(begin);
+        for (int i = begin + 1; i <= end; i++) {
+            T current = list.get(i);
+            if (current.compareTo(max) > 0) {
+                max = current;
+            }
+        }
+        return max;
+    }
+
+    public static void main(String[] args) {
+        // Example usage
+        List<Integer> numbers = List.of(10, 5, 20, 8, 15, 30, 12);
+        int maxInRange = findMaxInRange(numbers, 2, 5);
+        System.out.println("Maximal element in the range: " + maxInRange);
+    }
+}
+//prg 2//
+public class ElementSearcher {
+    public static <T> boolean searchElement(T[] array, T element) {
+        for (T el : array) {
+            if (el.equals(element)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        // Example usage
+        Integer[] numbers = {1, 2, 3, 4, 5};
+        int searchNumber = 3;
+
+        if (searchElement(numbers, searchNumber)) {
+            System.out.println(searchNumber + " found in the array.");
+        } else {
+            System.out.println(searchNumber + " not found in the array.");
+        }
+    }
+}
